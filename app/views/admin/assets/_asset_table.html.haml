@@ -37,9 +37,6 @@
             - tbody.content_type_cell do
               %td.content_type
                 = asset.asset_content_type
-            - tbody.bucket_cell do
-              %td.add-to-bucket
-                = link_to_remote(t("paperclipped.add_to_bucket"), :url => add_bucket_url(:id => asset))
             - tbody.remove_cell do
               %td.remove
                 = link_to t("paperclipped.remove_asset"), remove_admin_asset_path(asset)

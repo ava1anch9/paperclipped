@@ -17,19 +17,12 @@ class PaperclippedExtension < Radiant::Extension
     }
 
     %w{page}.each do |view|
-      # admin.send(view).edit.add :main, "/admin/assets/show_bucket_link", :before => "edit_header"  
       admin.pages.edit.add :part_controls, 'admin/assets/show_bucket_link'   
       admin.send(view).edit.add :main, "/admin/assets/assets_bucket", :after => "edit_buttons"
-      admin.send(view).edit.asset_tabs.concat %w{attachment_tab upload_tab bucket_tab search_tab}
+      admin.send(view).edit.asset_tabs.concat %w{upload_tab search_tab}
       admin.send(view).edit.bucket_pane.concat %w{bucket_notes bucket bucket_bottom}
-      admin.send(view).edit.asset_panes.concat %w{page_attachments upload search}
+      admin.send(view).edit.asset_panes.concat %w{upload search}
     end
-    
-    Page.class_eval {
-      has_many :page_attachments, :order => :position
-      has_many :assets, :through => :page_attachments
-      include AssetPageTags
-    }
     
     # Make asset tags available in stylesheets and javascripts
     if defined?(TextAsset)

@@ -29,8 +29,6 @@
   #assets_table
     = render :partial => 'asset_table', :locals => { :assets => @assets }
 
-= render :partial => 'assets_container'
-    
 - render_region :bottom do |bottom|
   #actions
     = pagination_for @assets, :depaginate => false

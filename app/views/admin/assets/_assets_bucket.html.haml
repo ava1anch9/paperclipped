@@ -1,8 +1,5 @@
 #asset-bucket{ :style => "display: none" }
   = render :partial => "/admin/assets/assets_container"
   
-  %p.note
-    = automatic_size_descriptions
-    = t('paperclipped.images_automatically_created')
   #close-link     
-    = link_to t("close"), "#"
+    = link_to "Close Bucket", "#"
