@@ -178,9 +178,6 @@ class Asset < ActiveRecord::Base
                     :url => Radiant::Config["assets.url"] ? Radiant::Config["assets.url"] : "/:class/:id/:basename:no_original_style.:extension", 
                     :path => Radiant::Config["assets.path"] ? Radiant::Config["assets.path"] : ":rails_root/public/:class/:id/:basename:no_original_style.:extension"
                                  
-  has_many :page_attachments, :dependent => :destroy
-  has_many :pages, :through => :page_attachments
- 
   belongs_to :created_by, :class_name => 'User'
   belongs_to :updated_by, :class_name => 'User'
   

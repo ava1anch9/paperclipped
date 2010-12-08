@@ -4,7 +4,7 @@
 #assets-container
   #asset-tabs
     - render_region :asset_tabs do |asset_tabs|
-      - if @page && !@page.new_record? 
+      - if (@page && !@page.new_record?) || (@layout && !@layout.new_record?) || (@snippet && !@snippet.new_record?)
         - asset_tabs.upload_tab do
           %a.asset-tab{ :href => "#upload-assets", :id => "tab_upload-assets" }
             = t("paperclipped.upload")
@@ -18,7 +18,7 @@
 
   #assets 
       
-    - if @page && !@page.new_record? 
+    - if (@page && !@page.new_record?) || (@layout && !@layout.new_record?) || (@snippet && !@snippet.new_record?)
       - render_region :asset_panes do |asset_panes|
 
         - asset_panes.upload do
@@ -35,7 +35,6 @@
               %p
                 %label.note{ :for => 'search' }
                   = t("paperclipped.search_assets")
-                %input{ :type => "hidden", :name => "search", :value => @page.id }
                 %input{ :type => "search", :id => "search", :name => "search" }
             #search-results
               = render :partial => 'admin/assets/search_results'

@@ -76,13 +76,19 @@ Asset.ResetForm = function (name) {
 Asset.AddAsset = function (asset_url) {
   var box = null;
   var index = 0;
-  $('tabs').select('.tab').each(function(tab) {
-		if (tab.hasClassName('here')) {
-			var page = $('pages').select('.page')[index];
-			box = page.select('.textarea')[0];
-		}
-  	index++;
-	});
+	var tabs = $('tabs');
+		
+  if (tabs) {
+		tabs.select('.tab').each(function(tab) {
+			if (tab.hasClassName('here')) {
+				var page = $('pages').select('.page')[index];
+				box = page.select('.textarea')[0];
+			}
+  		index++;
+		});
+	} else {
+		box = $('content').select('.textarea')[0];
+	}
 
   if(box) {
 		if(!!document.selection){
