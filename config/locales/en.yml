@@ -53,7 +53,7 @@ en:
     save_and_upload: 'Upload and Insert'
     search_assets: 'Search Assets'
     search: 'Search'
-    show_assets_bucket: 'Show Assets Bucket'
+    show_assets_bucket: 'Insert Assets'
     title: 'Title'
     type: 'Type'  
     types_to_find: 'Types to find'

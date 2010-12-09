@@ -1,4 +1,2 @@
-- if (!@page.nil? && !@page.new_record?) || (!@layout.nil? && !@layout.new_record?) || (!@snippet.nil? && !@snippet.new_record?)
-  %span#show-bucket
-    = t('paperclipped.bucket')
-    = link_to t("paperclipped.show_assets_bucket"), "#"
+%span#show-bucket
+  = link_to t("paperclipped.show_assets_bucket"), "#"

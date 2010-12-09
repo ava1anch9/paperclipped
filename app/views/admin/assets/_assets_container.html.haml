@@ -4,39 +4,33 @@
 #assets-container
   #asset-tabs
     - render_region :asset_tabs do |asset_tabs|
-      - if (@page && !@page.new_record?) || (@layout && !@layout.new_record?) || (@snippet && !@snippet.new_record?)
-        - asset_tabs.upload_tab do
-          %a.asset-tab{ :href => "#upload-assets", :id => "tab_upload-assets" }
-            = t("paperclipped.upload")
-        - asset_tabs.search_tab do  
-          %a.asset-tab{ :href => "#search-assets" }
-            = t("paperclipped.search")
-      - else
-        - asset_tabs.bucket_tab do
-          %a.asset-tab.here{ :href => "#" }
-            = t("paperclipped.bucket")
+      - asset_tabs.upload_tab do
+        %a.asset-tab{ :href => "#upload-assets", :id => "tab_upload-assets" }
+          = t("paperclipped.upload")
+      - asset_tabs.search_tab do  
+        %a.asset-tab{ :href => "#search-assets" }
+          = t("paperclipped.search")
 
   #assets 
       
-    - if (@page && !@page.new_record?) || (@layout && !@layout.new_record?) || (@snippet && !@snippet.new_record?)
-      - render_region :asset_panes do |asset_panes|
+    - render_region :asset_panes do |asset_panes|
 
-        - asset_panes.upload do
-          #upload-assets.pane
+      - asset_panes.upload do
+        #upload-assets.pane
+          %p
+            %span.note
+              != t("paperclipped.asset_page_upload_note")
+          = render :partial => "admin/assets/upload_to_page"
+          .clear
+        
+      - asset_panes.search do
+        #search-assets.pane
+          - form_tag do
             %p
-              %span.note
-                != t("paperclipped.asset_page_upload_note")
-            = render :partial => "admin/assets/upload_to_page"
-            .clear
-          
-        - asset_panes.search do
-          #search-assets.pane
-            - form_tag do
-              %p
-                %label.note{ :for => 'search' }
-                  = t("paperclipped.search_assets")
-                %input{ :type => "search", :id => "search", :name => "search" }
-            #search-results
-              = render :partial => 'admin/assets/search_results'
-            .clear
+              %label.note{ :for => 'search' }
+                = t("paperclipped.search_assets")
+              %input{ :type => "search", :id => "search", :name => "search" }
+          #search-results
+            = render :partial => 'admin/assets/search_results'
+          .clear
             = observe_field 'search',  :frequency => 1, :update => 'search-results', :url =>  admin_assets_path(:source => "bucket"), :method => 'get', :with => "'search=' + escape(value)"

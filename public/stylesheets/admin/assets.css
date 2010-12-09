@@ -150,8 +150,7 @@ table#site-map td.assets, table#site-map th.assets  { text-align: right; border:
 
 .move a { cursor: pointer; }
 
-#show-bucket { font-size: 85%; padding: 0 0 0 4px; }
-#content form #show-bucket a { color: #44e; }
+#part-body #show-bucket a { color: #44e; }
 
 .highlight { color: #fff; }
 .pagination { float: right; margin: 14px 10px 0 0;}

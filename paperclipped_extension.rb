@@ -5,7 +5,7 @@ include UrlAdditions
 class PaperclippedExtension < Radiant::Extension
   version "0.8.0"
   description "Assets extension based on the lightweight Paperclip plugin."
-  url "http://github.com/kbingman/paperclipped"
+  url "http://github.com/krug/paperclipped"
   
   def activate
     
@@ -17,16 +17,17 @@ class PaperclippedExtension < Radiant::Extension
     }
 
     admin.page.edit.add :part_controls, '/admin/assets/show_bucket_link'   
-    admin.layout.edit.add :form, '/admin/assets/show_bucket_link', :after => "edit_extended_metadata"
-    admin.snippet.edit.add :form, '/admin/assets/show_bucket_link', :after => "edit_title"
+    admin.layout.edit.add :part_controls, '/admin/assets/show_bucket_link'
+    admin.snippet.edit.add :part_controls, '/admin/assets/show_bucket_link'
+    admin.styles.edit.add :part_controls, '/admin/assets/show_bucket_link'
+    admin.scripts.edit.add :part_controls, '/admin/assets/show_bucket_link'
 
-    %w{page layout snippet}.each do |view|
+    %w{page layout snippet styles scripts}.each do |view|
       admin.send(view).edit.add :main, "/admin/assets/assets_bucket", :after => "edit_buttons"
       admin.send(view).edit.asset_tabs.concat %w{upload_tab search_tab}
       admin.send(view).edit.asset_panes.concat %w{upload search}
     end
-    
-    # Make asset tags available in stylesheets and javascripts
+
     Page.class_eval do
       include AssetTags
     end
