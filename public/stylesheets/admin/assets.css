@@ -12,6 +12,8 @@
 
 td.asset { width: 72px; }
 
+td.asset img { padding-top: 25px; padding-bottom: 25px; }
+
 td.asset a {   }
 td.asset a img { padding: 2px; background-color: #eee; border: 1px solid #ccc;}
 
@@ -23,8 +25,8 @@ table td.asset-title a:hover, td.asset-tags a:hover, td.tag-name a:hover {
  color: blue; text-decoration: underline; }
 table .caption { color: #9eb3bf; font-style: italic; font-weight: normal; margin: 10px; }
 
-table th.content_type { width: 120px; }
-table td.content_type { width: 120px; color: #9eb3bf; font-style: italic; font-weight: normal; }
+table th.content_type { width: 200px; }
+table td.content_type { width: 200px; font-weight: normal; }
 
 #asset-bucket {
   width: 540px;

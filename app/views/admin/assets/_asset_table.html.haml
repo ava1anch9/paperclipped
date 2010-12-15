@@ -14,7 +14,7 @@
             = t("paperclipped.title")
         - thead.content_type_header do
           %th.content_type
-            = t("paperclipped.type")
+            Path
         - thead.modify_header do
           %th.modify{ :colspan =>"2"}
             = t('modify')
@@ -36,11 +36,12 @@
                   = asset.caption
             - tbody.content_type_cell do
               %td.content_type
-                = asset.asset_content_type
+                = asset.asset.url
             - tbody.remove_cell do
-              %td.remove
-                = link_to t("paperclipped.remove_asset"), remove_admin_asset_path(asset)
-
+              %td.remove.actions
+                %a.action{:href => remove_admin_asset_path(asset)}
+                  =image_tag('admin/minus.png')
+                  =t("remove")
     - else
       %tr
         %td.note{ :colspan => "5" } 

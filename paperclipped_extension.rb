@@ -16,13 +16,8 @@ class PaperclippedExtension < Radiant::Extension
       helper Admin::AssetsHelper
     }
 
-    admin.page.edit.add :part_controls, '/admin/assets/show_bucket_link'   
-    admin.layout.edit.add :part_controls, '/admin/assets/show_bucket_link'
-    admin.snippet.edit.add :part_controls, '/admin/assets/show_bucket_link'
-    admin.styles.edit.add :part_controls, '/admin/assets/show_bucket_link'
-    admin.scripts.edit.add :part_controls, '/admin/assets/show_bucket_link'
-
     %w{page layout snippet styles scripts}.each do |view|
+      admin.send(view).edit.add :part_controls, '/admin/assets/show_bucket_link'
       admin.send(view).edit.add :main, "/admin/assets/assets_bucket", :after => "edit_buttons"
       admin.send(view).edit.asset_tabs.concat %w{upload_tab search_tab}
       admin.send(view).edit.asset_panes.concat %w{upload search}
